@@ -20,7 +20,6 @@ pyfolio
 alphalens
 twilio
 slackclient
-#jupyter-dash==0.1.0a3
 jupyter-dash
 kiteconnect
 dropbox
