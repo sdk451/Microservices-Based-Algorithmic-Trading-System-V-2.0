@@ -1,5 +1,5 @@
 # FROM python:3.7
-FROM continuumio/miniconda
+FROM continuumio/miniconda3
 
 MAINTAINER Wilder Rodrigues (wilder.rodrigues@ekholabs.ai)
 
