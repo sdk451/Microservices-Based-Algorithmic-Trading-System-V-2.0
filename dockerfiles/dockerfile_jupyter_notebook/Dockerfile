@@ -1,10 +1,8 @@
-FROM jupyter/scipy-notebook
+
 # FROM jupyter/scipy-notebook:b2562c469cdd
-
-USER root
-
-COPY requirements.txt /tmp/
-RUN pip install --requirement /tmp/requirements.txt 
+# USER root
+# COPY requirements.txt /tmp/
+# RUN pip install --requirement /tmp/requirements.txt 
 # && \
     # fix-permissions $CONDA_DIR && \
     # fix-permissions /home/$NB_USER && \
@@ -20,11 +18,22 @@ RUN pip install --requirement /tmp/requirements.txt
     # jupyter lab build &&\
     # unset NODE_OPTIONS
 
-ENV PYTHONPATH "${PYTHONPATH}:/home/jovyan/work/q_pack"
+FROM jupyter/scipy-notebook
+
+USER root
+    
+COPY requirements.txt /tmp/
+    RUN pip install --requirement /tmp/requirements.txt && \
+        fix-permissions $CONDA_DIR && \
+        fix-permissions /home/$NB_USER && \
+        apt update && \
+        apt-get install curl -y
+    
+
+ENV PYTHONPATH "${PYTHONPATH}:/home/simon/work/q_pack"
 ENV JUPYTER_ENABLE_LAB "yes"
     
 CMD ["jupyter", "lab", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''", "--allow-root"]
-
 
 # Another way to give root access without password in the compose
     # environment:
