@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../Microservices-Based-Algorithmic-Trading-System"
+		},
+		{
+			"path": "../mageai-duckdb-finance"
 		}
 	],
 	"settings": {}

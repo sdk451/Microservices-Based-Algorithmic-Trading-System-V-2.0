@@ -23,11 +23,12 @@ FROM jupyter/scipy-notebook
 USER root
     
 COPY requirements.txt /tmp/
-    RUN pip install --requirement /tmp/requirements.txt && \
-        fix-permissions $CONDA_DIR && \
-        fix-permissions /home/$NB_USER && \
-        apt update && \
-        apt-get install curl -y
+
+RUN pip install --requirement /tmp/requirements.txt --no-deps && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER && \
+    apt update && \
+    apt-get install curl -y
     
 
 ENV PYTHONPATH "${PYTHONPATH}:/home/simon/work/q_pack"
