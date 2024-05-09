@@ -36,8 +36,8 @@ services:
         build:
             context: ./dockerfiles/dockerfile_jupyter_notebook
         volumes:
-            - ./Storage/notebooks:/home/simon/work
-            - ./Storage/q_pack:/home/simon/work/q_pack
+            - ./Storage/notebooks:/home/joyvan/work
+            - ./Storage/q_pack:/home/jovyan/work/q_pack
             - ./Storage/mlflow:/mlflow-image
         environment:
             MLFLOW_S3_ENDPOINT_URL: http://minio-image:9000

@@ -24,6 +24,8 @@ USER root
     
 COPY requirements.txt /tmp/
 
+WORKDIR /app
+
 RUN pip install --requirement /tmp/requirements.txt --no-deps && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER && \
@@ -31,7 +33,7 @@ RUN pip install --requirement /tmp/requirements.txt --no-deps && \
     apt-get install curl -y
     
 
-ENV PYTHONPATH "${PYTHONPATH}:/home/simon/work/q_pack"
+ENV PYTHONPATH "${PYTHONPATH}:/home/jovyan"
 ENV JUPYTER_ENABLE_LAB "yes"
     
 CMD ["jupyter", "lab", "--no-browser","--NotebookApp.token=''","--NotebookApp.password=''", "--allow-root"]
